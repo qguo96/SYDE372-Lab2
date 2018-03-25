@@ -1,6 +1,7 @@
 % Lab 2 - Model Estimation and Discriminant Functions
 %% Load data 
-load('N:\SYDE372-Labs\SYDE372-Lab2\lab2_1.mat')
+load('C:\Users\presi\Documents\SYDE372-Lab2\lab2_1.mat')
+load('C:\Users\presi\Documents\SYDE372-Lab2\lab2_2.mat')
 
 % Note: remember to change the path of the lab files to your path 
 
@@ -154,4 +155,27 @@ hold on;
 legend('Parzan for Dataset B with SD = 0.1','Parzan for Dataset B with SD = 0.4','True p(x)'); % TODO: Fix legend ....
 xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
 ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+
+
+%% Section 3 - Part 1
+% First get the covarience and mean of the values 
+x = min([al(:,1);bl(:,1); cl(:,1)])-1:0.05:max([al(:,1);bl(:,1); cl(:,1)])+1;
+y = min([al(:,2);bl(:,2); cl(:,2)])-1:0.05:max([al(:,2);bl(:,2); cl(:,2)])+1;
+[x1, y1] = meshgrid(x, y);
+
+mean_al = [mean(al(:,1)); mean(al(:,2))];
+mean_bl = [mean(bl(:,1)); mean(bl(:,2))];
+mean_cl = [mean(cl(:,1)); mean(cl(:,2))];
+
+cov_al = getCov(al,mean_al);
+cov_bl = getCov(bl,mean_bl);
+cov_cl = getCov(cl,mean_cl);
+
+% Now will use the testing data to get the rest of the components
+Class_a_b_ML = getMap(cov_al,cov_bl,mean_al',mean_bl',x1,y1);
+Class_a_c_ML = getMap(cov_al,cov_cl,mean_al',mean_cl',x1,y1);
+Class_b_c_ML = getMap(cov_bl,cov_cl,mean_bl',mean_cl',x1,y1);
+Mesh_Grid_Plot_2 = mapClassifyMulticlass(x1,y1,Class_a_b_ML,Class_a_c_ML,Class_b_c_ML);
+plotMap3(x1,y1,Mesh_Grid_Plot_2,at,bt,ct);
+
 
