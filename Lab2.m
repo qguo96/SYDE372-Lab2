@@ -26,28 +26,28 @@ a_grid = zeros(size(a));
 a_normGaussian = normalGaussianDistributionPDF(a_gauMean_1D, a_gauVar_1D, x_a);
 a_trueNormGaussian = normalGaussianDistributionPDF(a_mean, a_sd, x_a);
 figure;
-title('Parametric Estimation - Gaussian for Set A (1D)');
 plot(x_a, a_normGaussian);
 hold on;
 plot(x_a, a_trueNormGaussian, 'Color', 'r');
 hold on;
+title('Parametric Estimation - Gaussian for Set A (1D)');
 legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
+ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
 
 % Set B 
 [b_gauMean_1D, b_gauVar_1D ] = gaussianParamEstimation_1D(b);
 b_normGaussian = normalGaussianDistributionPDF(b_gauMean_1D, b_gauVar_1D, x_b);
 b_trueNormGaussian = normalExponentialDistributionPDF(b_lambda, x_b);
 figure;
-title('Parametric Estimation - Gaussian for Set B (1D)');
 plot(x_b, b_normGaussian);
 hold on;
 plot(x_b, b_trueNormGaussian, 'Color', 'r');
 hold on;
+title('Parametric Estimation - Gaussian for Set B (1D)');
 legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
+ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
 
 
 %%
@@ -58,28 +58,28 @@ ylabel('y axis'); % y-axis label % TODO: Fix axis ...
 a_normExponential = normalExponentialDistributionPDF(a_expLambda_1D, x_a);
 a_trueNormExponential = normalGaussianDistributionPDF(a_mean, a_sd, x_a);
 figure;
-title('Parametric Estimation - Exponential for Set A (1D)');
 plot(x_a, a_normExponential);
 hold on;
 plot(x_a, a_trueNormExponential, 'Color', 'r');
 hold on;
+title('Parametric Estimation - Exponential for Set A (1D)');
 legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
+ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
 
 % Set B 
 [b_expLambda_1D] = exponentialParamEstimation_1D(b);
 b_normExponential = normalExponentialDistributionPDF(b_expLambda_1D, x_b);
 b_trueNormExponential = normalExponentialDistributionPDF(b_lambda, x_b);
 figure;
-title('Parametric Estimation - Exponential for Set B (1D)');
 plot(x_b, b_normExponential);
 hold on;
 plot(x_b, b_trueNormExponential, 'Color', 'r');
 hold on;
+title('Parametric Estimation - Exponential for Set B (1D)');
 legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
+ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
 
 
 %%
@@ -90,28 +90,28 @@ ylabel('y axis'); % y-axis label % TODO: Fix axis ...
 a_normUniform = normalUniformDistributionPDF(a_uniA_1D, a_uniB_1D, x_a);
 a_trueNormUniform = normalGaussianDistributionPDF(a_mean, a_sd, x_a);
 figure;
-title('Parametric Estimation - Uniform for Set A (1D)');
 plot(x_a, a_normUniform);
 hold on;
 plot(x_a, a_trueNormUniform, 'Color', 'r');
 hold on;
+title('Parametric Estimation - Uniform for Set A (1D)');
 legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
+ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
 
 % Set B 
 [b_uniA_1D, b_uniB_1D] = uniformParamEstimation_1D(b);
 b_normUniform = normalUniformDistributionPDF(b_uniA_1D, b_uniB_1D, x_b);
 b_trueNormUniform = normalExponentialDistributionPDF(b_lambda, x_b);
 figure;
-title('Parametric Estimation - Uniform for Set B (1D)');
 plot(x_b, b_normUniform);
 hold on;
 plot(x_b, b_trueNormUniform, 'Color', 'r');
 hold on;
+title('Parametric Estimation - Uniform for Set B (1D)');
 legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
+ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
 
 
 
@@ -128,16 +128,16 @@ sd_2 = 0.4;
 [a_parzanDensity2_1D] = parzanWindowEstimation_1D(a,sd_2);
 a_trueNormUniform = normalGaussianDistributionPDF(a_mean, a_sd, x_a);
 figure;
-title('Non Parametric Estimation - Parzan Method for Set A (1D)');
 plot(x_a, a_parzanDensity1_1D);
 hold on;
 plot(x_a, a_parzanDensity2_1D, 'Color', 'r');
 hold on;
 plot(x_a, a_trueNormUniform, 'Color', 'g');
 hold on;
+title('Non Parametric Estimation - Parzan Method for Set A (1D)');
 legend('Parzan for Dataset A with SD = 0.1','Parzan for Dataset A with SD = 0.4','True p(x)'); % TODO: Fix legend ....
-xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
+ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
 
 
 % Set B
@@ -145,19 +145,21 @@ ylabel('y axis'); % y-axis label % TODO: Fix axis ...
 [b_parzanDensity2_1D] = parzanWindowEstimation_1D(b,sd_2);
 b_trueNormUniform = normalExponentialDistributionPDF(b_lambda, x_b);
 figure;
-title('Non Parametric Estimation - Parzan Method for Set B (1D)');
 plot(x_b, b_parzanDensity1_1D);
 hold on;
 plot(x_b, b_parzanDensity2_1D, 'Color', 'r');
 hold on;
 plot(x_b, b_trueNormUniform, 'Color', 'g');
 hold on;
+title('Non Parametric Estimation - Parzan Method for Set B (1D)');
 legend('Parzan for Dataset B with SD = 0.1','Parzan for Dataset B with SD = 0.4','True p(x)'); % TODO: Fix legend ....
-xlabel('x axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('y axis'); % y-axis label % TODO: Fix axis ...
+xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
+ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
+
 
 
 %% Section 3 - Part 1
+disp('end it now')
 % First get the covarience and mean of the values 
 x = min([al(:,1);bl(:,1); cl(:,1)])-1:0.05:max([al(:,1);bl(:,1); cl(:,1)])+1;
 y = min([al(:,2);bl(:,2); cl(:,2)])-1:0.05:max([al(:,2);bl(:,2); cl(:,2)])+1;
