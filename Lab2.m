@@ -205,8 +205,9 @@ ylabel('p(x)'); % y-axis label
  Class_a_b_ML = getMap(cov_al,cov_bl,mean_al',mean_bl',x1,y1);
  Class_a_c_ML = getMap(cov_al,cov_cl,mean_al',mean_cl',x1,y1);
  Class_b_c_ML = getMap(cov_bl,cov_cl,mean_bl',mean_cl',x1,y1);
+
  Mesh_Grid_Plot_1 = mapClassifyMulticlass(x1,y1,Class_a_b_ML,Class_a_c_ML,Class_b_c_ML);
- ParametricPlot2d(x1,y1,Mesh_Grid_Plot_1,at,bt,ct);
+ ParametricPlot2d(x1, y1, Mesh_Grid_Plot_1, at, bt, ct);
 
  %%
  % Section 3 - Part 2
@@ -223,7 +224,7 @@ ylabel('p(x)'); % y-axis label
  [cl_pdf, cl_x, cl_y] = parzenWindowEstimation_2D( cl, res, win );
 
  Mesh_Grid_Plot_2 = mlNonParametric(al_pdf, bl_pdf, cl_pdf);
- NonparametricPlot2d(al_x, al_y, Mesh_Grid_Plot_2, al, bl, cl);
+ NonparametricPlot2d(al_x, al_y, Mesh_Grid_Plot_2, at, bt, ct);
 
 %% Section 4 - Sequential Discriminants
 
