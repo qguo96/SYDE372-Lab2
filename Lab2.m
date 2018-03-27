@@ -2,10 +2,10 @@
 
 %% Section 2 - Model Estimation 1D
 
-% Load data for Section 2 
+% Load data for Section 2
 load('N:\SYDE372-Labs\SYDE372-Lab2\lab2_1.mat')
 
-% Setup variables 
+% Setup variables
 a_minVal = min(a);
 a_maxVal = max(a);
 b_minVal = min(b);
@@ -19,7 +19,7 @@ a_grid = zeros(size(a));
 
 %%
 % Section 2 - Part 1
-% 1) Parametric Estimation - Gaussian 
+% 1) Parametric Estimation - Gaussian
 % Set A
 [a_gauMean_1D, a_gauVar_1D ] = gaussianParamEstimation_1D(a);
 a_normGaussian = normalGaussianDistributionPDF(a_gauMean_1D, a_gauVar_1D, x_a);
@@ -32,11 +32,11 @@ plot(x_a, a_normGaussian);
 hold on;
 plot(x_a, a_trueNormGaussian, 'Color', 'r');
 hold on;
-legend('Estimated p(x)','True p(x)'); 
-xlabel('x'); % x-axis label 
-ylabel('p(x)'); % y-axis label 
+legend('Estimated p(x)','True p(x)');
+xlabel('x'); % x-axis label
+ylabel('p(x)'); % y-axis label
 
-% Set B 
+% Set B
 [b_gauMean_1D, b_gauVar_1D ] = gaussianParamEstimation_1D(b);
 b_normGaussian = normalGaussianDistributionPDF(b_gauMean_1D, b_gauVar_1D, x_b);
 b_trueNormGaussian = normalExponentialDistributionPDF(b_lambda, x_b);
@@ -48,14 +48,14 @@ plot(x_b, b_normGaussian);
 hold on;
 plot(x_b, b_trueNormGaussian, 'Color', 'r');
 hold on;
-legend('Estimated p(x)','True p(x)'); 
-xlabel('x'); % x-axis label 
-ylabel('p(x)'); % y-axis label 
+legend('Estimated p(x)','True p(x)');
+xlabel('x'); % x-axis label
+ylabel('p(x)'); % y-axis label
 
 
 %%
 % Section 2 - Part 2
-% 2) Parametric Estimation - Exponential 
+% 2) Parametric Estimation - Exponential
 % Set A
 [a_expLambda_1D] = exponentialParamEstimation_1D(a);
 a_normExponential = normalExponentialDistributionPDF(a_expLambda_1D, x_a);
@@ -68,11 +68,11 @@ plot(x_a, a_normExponential);
 hold on;
 plot(x_a, a_trueNormExponential, 'Color', 'r');
 hold on;
-legend('Estimated p(x)','True p(x)'); 
-xlabel('x'); % x-axis label 
-ylabel('p(x)'); % y-axis label 
+legend('Estimated p(x)','True p(x)');
+xlabel('x'); % x-axis label
+ylabel('p(x)'); % y-axis label
 
-% Set B 
+% Set B
 [b_expLambda_1D] = exponentialParamEstimation_1D(b);
 b_normExponential = normalExponentialDistributionPDF(b_expLambda_1D, x_b);
 b_trueNormExponential = normalExponentialDistributionPDF(b_lambda, x_b);
@@ -85,8 +85,8 @@ hold on;
 plot(x_b, b_trueNormExponential, 'Color', 'r');
 hold on;
 legend('Estimated p(x)','True p(x)');
-xlabel('x'); % x-axis label 
-ylabel('p(x)'); % y-axis label 
+xlabel('x'); % x-axis label
+ylabel('p(x)'); % y-axis label
 
 
 %%
@@ -104,11 +104,11 @@ plot(x_a, a_normUniform);
 hold on;
 plot(x_a, a_trueNormUniform, 'Color', 'r');
 hold on;
-legend('Estimated p(x)','True p(x)'); 
-xlabel('x'); % x-axis label 
-ylabel('p(x)'); % y-axis label 
+legend('Estimated p(x)','True p(x)');
+xlabel('x'); % x-axis label
+ylabel('p(x)'); % y-axis label
 
-% Set B 
+% Set B
 [b_uniA_1D, b_uniB_1D] = uniformParamEstimation_1D(b);
 b_normUniform = normalUniformDistributionPDF(b_uniA_1D, b_uniB_1D, x_b);
 b_trueNormUniform = normalExponentialDistributionPDF(b_lambda, x_b);
@@ -120,17 +120,17 @@ plot(x_b, b_normUniform);
 hold on;
 plot(x_b, b_trueNormUniform, 'Color', 'r');
 hold on;
-legend('Estimated p(x)','True p(x)'); 
-xlabel('x'); % x-axis label 
-ylabel('p(x)'); % y-axis label 
+legend('Estimated p(x)','True p(x)');
+xlabel('x'); % x-axis label
+ylabel('p(x)'); % y-axis label
 
 
 
 %%
 % Section 2 - Part 4
-% 4) Non-Parametric Estimation 
+% 4) Non-Parametric Estimation
 
-% For Gaussian Windows, assuming an h = 1 
+% For Gaussian Windows, assuming an h = 1
 sd_1 = 0.1;
 sd_2 = 0.4;
 
@@ -150,16 +150,16 @@ title('Non Parametric Estimation - Parzan Method for SD = 0.1 (1D)');
 box on
 hold on;
 plot(x_a, a_parzanDensity1_1D);
-hold on; 
+hold on;
 plot(x_b, b_parzanDensity1_1D);
-hold on; 
+hold on;
 plot(x_a, a_trueNormUniform, 'Color', 'g');
 hold on;
 plot(x_b, b_trueNormUniform, 'Color', 'black');
 hold on;
-legend('Parzan for set A with SD = 0.1','Parzan for set A with SD = 0.1','True p(x) for Set A', 'True p(x) for Set B'); 
-xlabel('x'); % x-axis label 
-ylabel('p(x)'); % y-axis label 
+legend('Parzan for set A with SD = 0.1','Parzan for set A with SD = 0.1','True p(x) for Set A', 'True p(x) for Set B');
+xlabel('x'); % x-axis label
+ylabel('p(x)'); % y-axis label
 
 % Plot for SD = 0.4
 figure;
@@ -167,84 +167,77 @@ title('Non Parametric Estimation - Parzan Method for SD = 0.4 (1D)');
 box on
 hold on;
 plot(x_a, a_parzanDensity2_1D);
-hold on; 
+hold on;
 plot(x_b, b_parzanDensity2_1D);
-hold on; 
+hold on;
 plot(x_a, a_trueNormUniform, 'Color', 'g');
 hold on;
 plot(x_b, b_trueNormUniform, 'Color', 'black');
 hold on;
-legend('Parzan for set A with SD = 0.4','Parzan for set A with SD = 0.4','True p(x) for Set A', 'True p(x) for Set B'); 
-xlabel('x'); % x-axis label 
-ylabel('p(x)'); % y-axis label 
+legend('Parzan for set A with SD = 0.4','Parzan for set A with SD = 0.4','True p(x) for Set A', 'True p(x) for Set B');
+xlabel('x'); % x-axis label
+ylabel('p(x)'); % y-axis label
 
 %% Section 3 - Model Estimation 2-D Case
 % Load data for Section 3
  load('N:\SYDE372-Labs\SYDE372-Lab2\lab2_2.mat')
 
-% Section 3 - Part 1: Parametric Estimation
-% First get the covarience and mean of the values 
-x = min([al(:,1);bl(:,1); cl(:,1)])-1:0.05:max([al(:,1);bl(:,1); cl(:,1)])+1;
-y = min([al(:,2);bl(:,2); cl(:,2)])-1:0.05:max([al(:,2);bl(:,2); cl(:,2)])+1;
-[x1, y1] = meshgrid(x, y);
+ %% Section 3 - Part 1
+ % First get the covarience and mean of the values
+ min_x = min([al(:,1);bl(:,1); cl(:,1)])-1;
+ max_x = max([al(:,1);bl(:,1); cl(:,1)])+1;
+ min_y = min([al(:,2);bl(:,2); cl(:,2)])-1;
+ max_y = max([al(:,2);bl(:,2); cl(:,2)])+1;
 
-mean_al = [mean(al(:,1)); mean(al(:,2))];
-mean_bl = [mean(bl(:,1)); mean(bl(:,2))];
-mean_cl = [mean(cl(:,1)); mean(cl(:,2))];
+ x = min_x:1:max_x;
+ y = min_y:1:max_y;
+ [x1, y1] = meshgrid(x, y);
 
-cov_al = getCov(al,mean_al);
-cov_bl = getCov(bl,mean_bl);
-cov_cl = getCov(cl,mean_cl);
+ mean_al = [mean(al(:,1)); mean(al(:,2))];
+ mean_bl = [mean(bl(:,1)); mean(bl(:,2))];
+ mean_cl = [mean(cl(:,1)); mean(cl(:,2))];
 
-% Now will use the testing data to get the rest of the components
-Class_a_b_ML = getMap(cov_al,cov_bl,mean_al',mean_bl',x1,y1);
-Class_a_c_ML = getMap(cov_al,cov_cl,mean_al',mean_cl',x1,y1);
-Class_b_c_ML = getMap(cov_bl,cov_cl,mean_bl',mean_cl',x1,y1);
-Mesh_Grid_Plot_2 = mapClassifyMulticlass(x1,y1,Class_a_b_ML,Class_a_c_ML,Class_b_c_ML);
-plotMap3(x1,y1,Mesh_Grid_Plot_2,at,bt,ct);
+ cov_al = getCov(al,mean_al);
+ cov_bl = getCov(bl,mean_bl);
+ cov_cl = getCov(cl,mean_cl);
 
+ % Now will use the testing data to get the rest of the components
+ Class_a_b_ML = getMap(cov_al,cov_bl,mean_al',mean_bl',x1,y1);
+ Class_a_c_ML = getMap(cov_al,cov_cl,mean_al',mean_cl',x1,y1);
+ Class_b_c_ML = getMap(cov_bl,cov_cl,mean_bl',mean_cl',x1,y1);
+ Mesh_Grid_Plot_1 = mapClassifyMulticlass(x1,y1,Class_a_b_ML,Class_a_c_ML,Class_b_c_ML);
+ ParametricPlot2d(x1,y1,Mesh_Grid_Plot_1,at,bt,ct);
 
-%%
-% Section 3 - Part 2: Non-Parametric Estimation
+ %%
+ % Section 3 - Part 2
+ % 4) Non-Parametric Estimation
 
-figure;
-scatter(al(:,1), al(:,2))
-hold on
-scatter(bl(:,1), bl(:,2))
-hold on
-scatter(cl(:,1), cl(:,2))
-hold on
+ precision = 500;
+ variance = 400;
 
-min_x = 0;
-min_y = 0;
-max_x = 500;
-max_y = 500;
-precision = 500;
-variance = 400;
+ win = makeGaussianWindow(-200, -200, 200, 200, variance, precision);
+ res = [1 min_x min_y max_x max_y];
 
-win = makeGaussianWindow(-800, -800, 800, 800, variance, precision);
-res = [1 min_x min_y max_x max_y];
+ [al_pdf, al_x, al_y] = parzenWindowEstimation_2D( al, res, win );
+ [bl_pdf, bl_x, bl_y] = parzenWindowEstimation_2D( bl, res, win );
+ [cl_pdf, cl_x, cl_y] = parzenWindowEstimation_2D( cl, res, win );
 
-[al_pdf, al_x, al_y] = parzenWindowEstimation_2D( al, res, win );
-[bl_pdf, bl_x, bl_y] = parzenWindowEstimation_2D( bl, res, win );
-[cl_pdf, cl_x, cl_y] = parzenWindowEstimation_2D( cl, res, win );
-
-boundary = mlNonParametric(al_pdf, bl_pdf, cl_pdf);
-contour(al_x, al_y, boundary);
+ Mesh_Grid_Plot_2 = mlNonParametric(al_pdf, bl_pdf, cl_pdf);
+ NonparametricPlot2d(al_x, al_y, Mesh_Grid_Plot_2, al, bl, cl);
 
 %% Section 4 - Sequential Discriminants
 
 % Load data for Section 4
 load('N:\SYDE372-Labs\SYDE372-Lab2\lab2_3.mat')
 
-% Mesh Grid for MED Classification 
+% Mesh Grid for MED Classification
 x1 = linspace(min([a(:,1);b(:,1)]), max([a(:,1);b(:,1)]), 100);
 y1 = linspace(min([a(:,2);b(:,2)]), max([a(:,2);b(:,2)]), 100);
 
-% Deliverable 1: Learn 3 sequential classifiers 
+% Deliverable 1: Learn 3 sequential classifiers
 performSequentialEstimation(x1,y1,a,b,1,1);
 performSequentialEstimation(x1,y1,a,b,1,2);
 performSequentialEstimation(x1,y1,a,b,1,3);
 
-% Deliverable 3: J = 5 with 20 calculations 
+% Deliverable 3: J = 5 with 20 calculations
 performSequentialEstimation(x1,y1,a,b,5,0);
