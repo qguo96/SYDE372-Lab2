@@ -1,12 +1,11 @@
 % Lab 2 - Model Estimation and Discriminant Functions
-%% Load data
-load('C:\Users\presi\Documents\SYDE372-Lab2\lab2_1.mat')
-load('C:\Users\presi\Documents\SYDE372-Lab2\lab2_2.mat')
-
-% Note: remember to change the path of the lab files to your path
 
 %% Section 2 - Model Estimation 1D
-% Setup variables
+
+% Load data for Section 2 
+load('N:\SYDE372-Labs\SYDE372-Lab2\lab2_1.mat')
+
+% Setup variables 
 a_minVal = min(a);
 a_maxVal = max(a);
 b_minVal = min(b);
@@ -20,66 +19,74 @@ a_grid = zeros(size(a));
 
 %%
 % Section 2 - Part 1
-% 1) Parametric Estimation - Gaussian
+% 1) Parametric Estimation - Gaussian 
 % Set A
 [a_gauMean_1D, a_gauVar_1D ] = gaussianParamEstimation_1D(a);
 a_normGaussian = normalGaussianDistributionPDF(a_gauMean_1D, a_gauVar_1D, x_a);
 a_trueNormGaussian = normalGaussianDistributionPDF(a_mean, a_sd, x_a);
 figure;
+title('Parametric Estimation - Gaussian for Set A (1D)');
+box on
+hold on;
 plot(x_a, a_normGaussian);
 hold on;
 plot(x_a, a_trueNormGaussian, 'Color', 'r');
 hold on;
-title('Parametric Estimation - Gaussian for Set A (1D)');
-legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
+legend('Estimated p(x)','True p(x)'); 
+xlabel('x'); % x-axis label 
+ylabel('p(x)'); % y-axis label 
 
-% Set B
+% Set B 
 [b_gauMean_1D, b_gauVar_1D ] = gaussianParamEstimation_1D(b);
 b_normGaussian = normalGaussianDistributionPDF(b_gauMean_1D, b_gauVar_1D, x_b);
 b_trueNormGaussian = normalExponentialDistributionPDF(b_lambda, x_b);
 figure;
+title('Parametric Estimation - Gaussian for Set B (1D)');
+box on
+hold on;
 plot(x_b, b_normGaussian);
 hold on;
 plot(x_b, b_trueNormGaussian, 'Color', 'r');
 hold on;
-title('Parametric Estimation - Gaussian for Set B (1D)');
-legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
+legend('Estimated p(x)','True p(x)'); 
+xlabel('x'); % x-axis label 
+ylabel('p(x)'); % y-axis label 
 
 
 %%
 % Section 2 - Part 2
-% 2) Parametric Estimation - Exponential
+% 2) Parametric Estimation - Exponential 
 % Set A
 [a_expLambda_1D] = exponentialParamEstimation_1D(a);
 a_normExponential = normalExponentialDistributionPDF(a_expLambda_1D, x_a);
 a_trueNormExponential = normalGaussianDistributionPDF(a_mean, a_sd, x_a);
 figure;
+title('Parametric Estimation - Exponential for Set A (1D)');
+box on
+hold on;
 plot(x_a, a_normExponential);
 hold on;
 plot(x_a, a_trueNormExponential, 'Color', 'r');
 hold on;
-title('Parametric Estimation - Exponential for Set A (1D)');
-legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
+legend('Estimated p(x)','True p(x)'); 
+xlabel('x'); % x-axis label 
+ylabel('p(x)'); % y-axis label 
 
-% Set B
+% Set B 
 [b_expLambda_1D] = exponentialParamEstimation_1D(b);
 b_normExponential = normalExponentialDistributionPDF(b_expLambda_1D, x_b);
 b_trueNormExponential = normalExponentialDistributionPDF(b_lambda, x_b);
 figure;
+title('Parametric Estimation - Exponential for Set B (1D)');
+box on
+hold on;
 plot(x_b, b_normExponential);
 hold on;
 plot(x_b, b_trueNormExponential, 'Color', 'r');
 hold on;
-title('Parametric Estimation - Exponential for Set B (1D)');
-legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
+legend('Estimated p(x)','True p(x)');
+xlabel('x'); % x-axis label 
+ylabel('p(x)'); % y-axis label 
 
 
 %%
@@ -90,36 +97,40 @@ ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
 a_normUniform = normalUniformDistributionPDF(a_uniA_1D, a_uniB_1D, x_a);
 a_trueNormUniform = normalGaussianDistributionPDF(a_mean, a_sd, x_a);
 figure;
+title('Parametric Estimation - Uniform for Set A (1D)');
+box on
+hold on;
 plot(x_a, a_normUniform);
 hold on;
 plot(x_a, a_trueNormUniform, 'Color', 'r');
 hold on;
-title('Parametric Estimation - Uniform for Set A (1D)');
-legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
+legend('Estimated p(x)','True p(x)'); 
+xlabel('x'); % x-axis label 
+ylabel('p(x)'); % y-axis label 
 
-% Set B
+% Set B 
 [b_uniA_1D, b_uniB_1D] = uniformParamEstimation_1D(b);
 b_normUniform = normalUniformDistributionPDF(b_uniA_1D, b_uniB_1D, x_b);
 b_trueNormUniform = normalExponentialDistributionPDF(b_lambda, x_b);
 figure;
+title('Parametric Estimation - Uniform for Set B (1D)');
+box on
+hold on;
 plot(x_b, b_normUniform);
 hold on;
 plot(x_b, b_trueNormUniform, 'Color', 'r');
 hold on;
-title('Parametric Estimation - Uniform for Set B (1D)');
-legend('Estimated p(x)','True p(x)'); % TODO: Fix legend ....
-xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
+legend('Estimated p(x)','True p(x)'); 
+xlabel('x'); % x-axis label 
+ylabel('p(x)'); % y-axis label 
 
 
 
 %%
 % Section 2 - Part 4
-% 4) Non-Parametric Estimation
+% 4) Non-Parametric Estimation 
 
-% For Gaussian Windows, assuming an h = 1
+% For Gaussian Windows, assuming an h = 1 
 sd_1 = 0.1;
 sd_2 = 0.4;
 
@@ -127,38 +138,51 @@ sd_2 = 0.4;
 [a_parzanDensity1_1D] = parzanWindowEstimation_1D(a,sd_1);
 [a_parzanDensity2_1D] = parzanWindowEstimation_1D(a,sd_2);
 a_trueNormUniform = normalGaussianDistributionPDF(a_mean, a_sd, x_a);
-figure;
-plot(x_a, a_parzanDensity1_1D);
-hold on;
-plot(x_a, a_parzanDensity2_1D, 'Color', 'r');
-hold on;
-plot(x_a, a_trueNormUniform, 'Color', 'g');
-hold on;
-title('Non Parametric Estimation - Parzan Method for Set A (1D)');
-legend('Parzan for Dataset A with SD = 0.1','Parzan for Dataset A with SD = 0.4','True p(x)'); % TODO: Fix legend ....
-xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
-
 
 % Set B
 [b_parzanDensity1_1D] = parzanWindowEstimation_1D(b,sd_1);
 [b_parzanDensity2_1D] = parzanWindowEstimation_1D(b,sd_2);
 b_trueNormUniform = normalExponentialDistributionPDF(b_lambda, x_b);
+
+% Plot for SD = 0.1
 figure;
+title('Non Parametric Estimation - Parzan Method for SD = 0.1 (1D)');
+box on
+hold on;
+plot(x_a, a_parzanDensity1_1D);
+hold on; 
 plot(x_b, b_parzanDensity1_1D);
+hold on; 
+plot(x_a, a_trueNormUniform, 'Color', 'g');
 hold on;
-plot(x_b, b_parzanDensity2_1D, 'Color', 'r');
+plot(x_b, b_trueNormUniform, 'Color', 'black');
 hold on;
-plot(x_b, b_trueNormUniform, 'Color', 'g');
-hold on;
-title('Non Parametric Estimation - Parzan Method for Set B (1D)');
-legend('Parzan for Dataset B with SD = 0.1','Parzan for Dataset B with SD = 0.4','True p(x)'); % TODO: Fix legend ....
-xlabel('X axis'); % x-axis label  % TODO: Fix axis ...
-ylabel('Y axis'); % y-axis label % TODO: Fix axis ...
+legend('Parzan for set A with SD = 0.1','Parzan for set A with SD = 0.1','True p(x) for Set A', 'True p(x) for Set B'); 
+xlabel('x'); % x-axis label 
+ylabel('p(x)'); % y-axis label 
 
+% Plot for SD = 0.4
+figure;
+title('Non Parametric Estimation - Parzan Method for SD = 0.4 (1D)');
+box on
+hold on;
+plot(x_a, a_parzanDensity2_1D);
+hold on; 
+plot(x_b, b_parzanDensity2_1D);
+hold on; 
+plot(x_a, a_trueNormUniform, 'Color', 'g');
+hold on;
+plot(x_b, b_trueNormUniform, 'Color', 'black');
+hold on;
+legend('Parzan for set A with SD = 0.4','Parzan for set A with SD = 0.4','True p(x) for Set A', 'True p(x) for Set B'); 
+xlabel('x'); % x-axis label 
+ylabel('p(x)'); % y-axis label 
 
-%% Section 3 - Part 1
-disp('end it now')
+%% Section 3 - Model Estimation 2-D Case
+% Load data for Section 3
+ load('N:\SYDE372-Labs\SYDE372-Lab2\lab2_2.mat')
+
+% Section 3 - Part 1: Parametric Estimation
 % First get the covarience and mean of the values 
 x = min([al(:,1);bl(:,1); cl(:,1)])-1:0.05:max([al(:,1);bl(:,1); cl(:,1)])+1;
 y = min([al(:,2);bl(:,2); cl(:,2)])-1:0.05:max([al(:,2);bl(:,2); cl(:,2)])+1;
@@ -179,9 +203,9 @@ Class_b_c_ML = getMap(cov_bl,cov_cl,mean_bl',mean_cl',x1,y1);
 Mesh_Grid_Plot_2 = mapClassifyMulticlass(x1,y1,Class_a_b_ML,Class_a_c_ML,Class_b_c_ML);
 plotMap3(x1,y1,Mesh_Grid_Plot_2,at,bt,ct);
 
+
 %%
-% Section 3 - Part 2
-% 4) Non-Parametric Estimation
+% Section 3 - Part 2: Non-Parametric Estimation
 
 figure;
 scatter(al(:,1), al(:,2))
@@ -207,3 +231,20 @@ res = [1 min_x min_y max_x max_y];
 
 boundary = mlNonParametric(al_pdf, bl_pdf, cl_pdf);
 contour(al_x, al_y, boundary);
+
+%% Section 4 - Sequential Discriminants
+
+% Load data for Section 4
+load('N:\SYDE372-Labs\SYDE372-Lab2\lab2_3.mat')
+
+% Mesh Grid for MED Classification 
+x1 = linspace(min([a(:,1);b(:,1)]), max([a(:,1);b(:,1)]), 100);
+y1 = linspace(min([a(:,2);b(:,2)]), max([a(:,2);b(:,2)]), 100);
+
+% Deliverable 1: Learn 3 sequential classifiers 
+performSequentialEstimation(x1,y1,a,b,1,1);
+performSequentialEstimation(x1,y1,a,b,1,2);
+performSequentialEstimation(x1,y1,a,b,1,3);
+
+% Deliverable 3: J = 5 with 20 calculations 
+performSequentialEstimation(x1,y1,a,b,5,0);
