@@ -13,6 +13,7 @@ function [avgError,minError,maxError,sdError] = findError(A,B,J,K,discriminants,
             % Get classifiers 
             [discriminants,true_n_ab,true_n_ba] = sequentialClassifier(dataA,dataB,J);
 
+            % Check each point in dataset A
             for i=1:lenA
                 x = A(i,:);  
                 classA(i) = classifyClasses(J,x(1),x(2),discriminants,true_n_ab,true_n_ba);
@@ -23,6 +24,7 @@ function [avgError,minError,maxError,sdError] = findError(A,B,J,K,discriminants,
                 end
             end
 
+            % Check each point in dataset B
             for i=1:lenB
                 x = B(i,:);  
                 classB(i) = classifyClasses(J,x(1),x(2),discriminants,true_n_ab,true_n_ba);

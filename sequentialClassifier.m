@@ -22,41 +22,39 @@ function [discriminants, true_n_ab, true_n_ba] = sequentialClassifier(A,B,J)
                 b_mu = B(b_rand,:); % Set mean for class B as random row
             end
 
-            % Classify all points (Either class A or class B)
+            % Classify all points (For class A)
             for i=1:size(A,1)
                 x = A(i,:);  
                 classA(i) = getMed(x(1),x(2),a_mu,b_mu);
 
                 % Misclassified 
                 if (classA(i) == 2)
-                    n_ab = n_ab + 1; 
+                    n_ab = n_ab + 1; % Increment error count
                     temp_a(end+1,:) = x; % Add misclassified point
                 end
             end
 
+            % Classify all points (For class B)
             for i=1:size(B,1)
                 x = B(i,:);  
                 classB(i) = getMed(x(1),x(2),a_mu,b_mu);
 
                 % Misclassified 
                 if (classB(i) == 1)
-                   n_ba = n_ba + 1; 
+                   n_ba = n_ba + 1; % Increment error count
                    temp_b(end+1,:) = x; % Add misclassified point
                 end
             end
             
             % End if no misclassified 
             if (n_ab == 0 || n_ba == 0)
-
                % Remove correct points if n_ab or n_ba == 0
                if (n_ab == 0)
                    B = temp_b; 
                end
-
                if (n_ba == 0)
                    A = temp_a; 
                end
-
                break; 
             end
         end      
@@ -70,7 +68,7 @@ function [discriminants, true_n_ab, true_n_ba] = sequentialClassifier(A,B,J)
         if (J ~= 0)
             % do nothing 
         end
-        if (J ~= 0 && j > J)
+        if (J ~= 0 && j > J) % J reached the final user-inputted threshold (5)
             break;
         end
 
@@ -79,6 +77,7 @@ function [discriminants, true_n_ab, true_n_ba] = sequentialClassifier(A,B,J)
             break;
         end
 
+        % Increment j 
         j = j + 1;    
     end
 end

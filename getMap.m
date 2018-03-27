@@ -1,6 +1,5 @@
 function [ Mesh_Grid_Plot ] = getMap(Sa, Sb, Ma, Mb, X, Y)
-    %   General Form of MAP Decision Boundary Equation (ML is a special
-    %   case of MAP)
+    %   General Form of MAP Decision Boundary Equation (ML is a special case of MAP)
     %   where we find Q0,Q1,Q2,Q3,Q4 values
 
     rows = size(X, 1);

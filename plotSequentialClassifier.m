@@ -13,6 +13,6 @@ function plotSequentialClassifier(A,B,x1,y1,G,num)
     scatter(B(:,1), B(:,2));
     hold on
     contour(X, Y, G);
-    xlabel('x-axis'); %TODO Change
-    ylabel('y-axis'); %TODO Change
+    xlabel('x-axis'); 
+    ylabel('y-axis'); 
 end

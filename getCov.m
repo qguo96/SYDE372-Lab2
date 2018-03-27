@@ -6,4 +6,4 @@ function c = getCov(data,mu)
  end
  
  c = (1/size(data,1))* var;
- end
+end

@@ -4,6 +4,7 @@ function [estimation] = classifyClasses(J,X,Y,discriminants,true_n_ab,true_n_ba)
         a_mu = discriminants{J}(1,:);
         b_mu = discriminants{J}(2,:);  
         
+        % Classifies each class 1 or 2 
         estimation = getMed(X,Y,a_mu,b_mu);
         if (estimation == 1 && true_n_ba{J} == 0)
             break;

@@ -1,6 +1,6 @@
 function performSequentialEstimation(x1,y1,A,B,J,num)
     [discriminants, true_n_ab, true_n_ba] = sequentialClassifier(A,B,0);
-
+    
     if (J == 1)
         lenX = prod(size(x1));
         lenY = prod(size(y1));
